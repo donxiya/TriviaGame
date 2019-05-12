@@ -136,7 +136,7 @@ var game = {
         // CANVAS MATHS
         var x = width / 2,
             y = height / 2,
-            radius = 200,
+            radius = 280,
             circum = Math.PI * 2,
             start = Math.PI / -2, // Start position (top)
             curr = 1; // Current position (in %)
