@@ -86,8 +86,10 @@ var game = {
                 $("#answerSlot").text(game.slideList[game.slideOrder].answer);
                 if (game.slideOrder == (game.slideList.length - 1)) {
                     console.log("end");
+                    $("#resultSlotR").text(game.countRight);
+                    $("#resultSlotW").text(game.countWrong);
                     $("#victoryScene").delay(5000).slideUp(500);
-                    $("#endScene").delay(5000).slideDown(500);
+                    $("#endScene").delay(5500).slideDown(500);
 
                 } else {
                     game.slideOrder++;
@@ -107,8 +109,10 @@ var game = {
                 $("#answerSlot").text(game.slideList[game.slideOrder].answer);
                 if (game.slideOrder === (game.slideList.length - 1)) {
                     console.log("end");
+                    $("#resultSlotR").text(game.countRight);
+                    $("#resultSlotW").text(game.countWrong);
                     $("#defeatScene").delay(5000).slideUp(500);
-                    $("#endScene").delay(5000).slideDown(500);
+                    $("#endScene").delay(5500).slideDown(500);
                 } else {
                     game.slideOrder++;
                     setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
@@ -133,6 +137,7 @@ var game = {
         game.slideshowUpdate(game.slideOrder);
         game.slideshowBody();
         $("#confirm").click(function () { game.confirmAnswer(); });
+        $("#endScene").click(function(){location.reload();})
     },
     timer: function () {
         // CANVAS
@@ -152,12 +157,12 @@ var game = {
         ctx.globalCompositeOperation = 'destination-over';
 
 
-        // CANVAS MATHS
+        // CANVAS 
         var x = width / 2,
             y = height / 2,
-            radius = 260,
+            radius = 270,
             circum = Math.PI * 2,
-            start = Math.PI / -2, // Start position (top)
+            start = Math.PI / -2, 
             curr = 1; // Current position (in %)
         var time = 30;
 
@@ -167,14 +172,11 @@ var game = {
             } else {
                 time--;
                 $("#timer").text("Time Left: " + time);
-                // Clear off the canvas
                 ctx.clearRect(0, 0, width, height);
-                // Start over
+ 
                 ctx.beginPath();
                 // arc(x, y, radius, startAngle, endAngle, anticlockwise)
-                // Re-draw from the very beginning each time so there isn't tiny line spaces between each section (the browser paint rendering will probably be smoother too)
                 ctx.arc(x, y, radius, start, circum * curr / 30 + start, false);
-                // Draw
                 ctx.stroke();
                 curr++;
             }
