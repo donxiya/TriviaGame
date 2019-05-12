@@ -1,5 +1,7 @@
 
 var game = {
+    countRight: 0,
+    countWrong: 0,
     timeUpdate: null,
     timeStop: null,
     selection: null,
@@ -52,8 +54,7 @@ var game = {
         $("#choice3").text(game.slideList[ord].choiceList[3].choice);
     },
     slideshowBody: function () {
-        $("#choice0").click(function () { game.selectAnswer(0); clearTimeout(game.timeStop);
-        });
+        $("#choice0").click(function () { game.selectAnswer(0); clearTimeout(game.timeStop); });
         $("#choice1").click(function () { game.selectAnswer(1); clearTimeout(game.timeStop); });
         $("#choice2").click(function () { game.selectAnswer(2); clearTimeout(game.timeStop); });
         $("#choice3").click(function () { game.selectAnswer(3); clearTimeout(game.timeStop); });
@@ -61,6 +62,7 @@ var game = {
     selectAnswer: function (sel) {
         game.selection = sel;
         $("#choice" + sel).addClass("answerContainerClick").removeClass("default");
+        $("#confirm").text("Confirm");
         for (i = 0; i <= game.answerList.length; i++) {
             if (game.answerList[i] != sel) {
                 $("#choice" + i).removeClass("answerContainerClick").addClass("answerContainer");
@@ -68,37 +70,54 @@ var game = {
         }
     },
     confirmAnswer: function () {
+        for(i=0; i<=4; i++){
+            $("#choice" + i).removeClass("answerContainerClick").addClass("answerContainer");
+        };
+        $("#confirm").text("Skip");
         console.log("slide num: " + game.slideOrder);
         if (game.selection != null) {
             if (game.selection === game.slideList[game.slideOrder].answer) {
                 game.selection = null;
+                game.countRight += 1;
                 clearInterval(game.timeUpdate);
                 console.log("correct");
                 $("#victoryScene").slideDown(500);
                 $("#gameBody").slideUp(500);
                 $("#answerSlot").text(game.slideList[game.slideOrder].answer);
-                if (game.slideOrder < (game.slideList.length - 1)) {
+                if (game.slideOrder == (game.slideList.length - 1)) {
+                    console.log("end");
+                    $("#victoryScene").delay(5000).slideUp(500);
+                    $("#endScene").delay(5000).slideDown(500);
+
+                } else {
                     game.slideOrder++;
                     console.log("next slide");
                     setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
-                } else {
-                    console.log("end");
+
                 }
             } else if (game.selection != game.slideList[game.slideOrder].answer) {
                 game.selection = null;
+                game.countWrong += 1;
+
                 clearInterval(game.timeUpdate);
                 console.log("wrong");
                 $("#defeatScene").slideDown(500);
                 $("#gameBody").slideUp(500);
 
                 $("#answerSlot").text(game.slideList[game.slideOrder].answer);
-                if (game.slideOrder < (game.slideList.length - 1)) {
+                if (game.slideOrder === (game.slideList.length - 1)) {
+                    console.log("end");
+                    $("#defeatScene").delay(5000).slideUp(500);
+                    $("#endScene").delay(5000).slideDown(500);
+                } else {
                     game.slideOrder++;
                     setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
+
                 }
             }
         } else {
             clearInterval(game.timeUpdate);
+            game.countWrong += 1;
             console.log("too late");
             $("#defeatScene").slideDown(500);
             $("#gameBody").slideUp(500);
@@ -125,18 +144,18 @@ var game = {
         // CANVAS PROPERTIES
         var ctx = canvas.getContext('2d');
         ctx.lineWidth = 45;
-        ctx.strokeStyle = '#0f0';
+        ctx.strokeStyle = '#e8827d';
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
         ctx.shadowBlur = 10;
-        ctx.shadowColor = '#0f0';
+        ctx.shadowColor = '#ef928f';
         ctx.globalCompositeOperation = 'destination-over';
 
 
         // CANVAS MATHS
         var x = width / 2,
             y = height / 2,
-            radius = 280,
+            radius = 260,
             circum = Math.PI * 2,
             start = Math.PI / -2, // Start position (top)
             curr = 1; // Current position (in %)

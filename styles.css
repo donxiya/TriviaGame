@@ -75,7 +75,7 @@
   margin: auto;
   display: block;
   position:relative;
-  background-color: black;
+  background-color: #a0e89b;
   z-index: -1;
   /* height: 500px;
   width: 500px; */
@@ -86,8 +86,7 @@
   width: 150px;
   height: 50px;
   color: antiquewhite;
-  background-color: red;
-  color: black;
+  background-color: #f23832;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   line-height: 50px;
@@ -103,7 +102,7 @@
 }
 #endScene{
   display: none;
-  background-color: brown;
+  background-color: black;
   height: 500px;
   width: 100%;
 }
