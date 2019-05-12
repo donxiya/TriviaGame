@@ -9,36 +9,28 @@ var game = {
     answerList: [0, 1, 2, 3],
     slideList: [
         {
-            tag: "Question Template",
-            question: "Q 0 ?",
+            question: "Where is the capital of Japan?",
             answer: 0,
-            choiceList: [{ choice: "string0", num: 0 }, { choice: "string1", num: 1 }, { choice: "string2", num: 2 }, { choice: "string3", num: 3 }],
-            result: null,
-            gifID: 0,
+            answerStr: "Tokyo",
+            choiceList: [{ choice: "Tokyo", num: 0 }, { choice: "Osaka", num: 1 }, { choice: "Kyoto", num: 2 }, { choice: "Okinawa", num: 3 }],
         },
         {
-            tag: "Question Template",
-            question: "Q 1 ?",
-            answer: 0,
-            choiceList: [{ choice: "string0", num: 0 }, { choice: "string1", num: 1 }, { choice: "string2", num: 2 }, { choice: "string3", num: 3 }],
-            result: null,
-            gifID: 0,
+            question: "Where is the capital of Turkey?",
+            answer: 2,
+            answerStr: "Ankara",
+            choiceList: [{ choice: "Edirne", num: 0 }, { choice: "Istanbul", num: 1 }, { choice: "Ankara", num: 2 }, { choice: "Bursa", num: 3 }],
         },
         {
-            tag: "Question Template",
-            question: "Q 2 ?",
-            answer: 0,
-            choiceList: [{ choice: "string0", num: 0 }, { choice: "string1", num: 1 }, { choice: "string2", num: 2 }, { choice: "string3", num: 3 }],
-            result: null,
-            gifID: 0,
+            question: "Where is the capital of Canada?",
+            answer: 1,
+            answerStr: "Ottawa",
+            choiceList: [{ choice: "Toronto", num: 0 }, { choice: "Ottawa", num: 1 }, { choice: "Quebec", num: 2 }, { choice: "Vancouver", num: 3 }],
         },
         {
-            tag: "Question Template",
-            question: "Q 3 ?",
-            answer: 0,
-            choiceList: [{ choice: "string0", num: 0 }, { choice: "string1", num: 1 }, { choice: "string2", num: 2 }, { choice: "string3", num: 3 }],
-            result: null,
-            gifID: 0,
+            question: "Where is the capital of Turkmenistan",
+            answer: 3,
+            answerStr: "Aşgabat",
+            choiceList: [{ choice: "Türkmenabat", num: 0 }, { choice: "Daşoguz", num: 1 }, { choice: "Balkanabat", num: 2 }, { choice: "Aşgabat", num: 3 }],
         },
     ],
     slideshowUpdate: function (ord) {
@@ -86,8 +78,8 @@ var game = {
                 $("#answerSlot").text(game.slideList[game.slideOrder].answer);
                 if (game.slideOrder == (game.slideList.length - 1)) {
                     console.log("end");
-                    $("#resultSlotR").text(game.countRight);
-                    $("#resultSlotW").text(game.countWrong);
+                    $("#resultSlotR").text("Correct Answers: "+ game.countRight);
+                    $("#resultSlotW").text("Failed: " + game.countWrong);
                     $("#victoryScene").delay(5000).slideUp(500);
                     $("#endScene").delay(5500).slideDown(500);
 
@@ -106,11 +98,11 @@ var game = {
                 $("#defeatScene").slideDown(500);
                 $("#gameBody").slideUp(500);
 
-                $("#answerSlot").text(game.slideList[game.slideOrder].answer);
+                $("#answerSlot").text(game.slideList[game.slideOrder].answerStr);
                 if (game.slideOrder === (game.slideList.length - 1)) {
                     console.log("end");
-                    $("#resultSlotR").text(game.countRight);
-                    $("#resultSlotW").text(game.countWrong);
+                    $("#resultSlotR").text("Correct Answers: "+ game.countRight);
+                    $("#resultSlotW").text("Failed: " + game.countWrong);
                     $("#defeatScene").delay(5000).slideUp(500);
                     $("#endScene").delay(5500).slideDown(500);
                 } else {
@@ -125,7 +117,7 @@ var game = {
             console.log("too late");
             $("#defeatScene").slideDown(500);
             $("#gameBody").slideUp(500);
-            $("#answerSlot").text(game.slideList[game.slideOrder].answer);
+            $("#answerSlot").text(game.slideList[game.slideOrder].answerStr);
             if (game.slideOrder < (game.slideList.length - 1)) {
                 game.slideOrder++;
                 setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);

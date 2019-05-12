@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Basic jQuery Dump</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+</head>
+
+<body>
+        <div id="endScene">
+            <p>Result:</p>
+            <div id="resultSlotR"></div>
+            <div id="resultSlotW"></div>
+            <p>Click to Restart</p>
+        </div>
+        <div id="victoryScene">
+            <div id="vicText">Correct!</div>
+            <p><br>Next question in 5 sec!</p>
+        </div>
+        <div id="defeatScene">
+            <div id="defText">Wrong!
+                <br>
+                The correct answer is:
+            </div>
+            <div id="answerSlot"></div>
+            <p><br>Next question in 5 sec!</p>
+        </div>
+        <div id="gameBody">
+            <canvas id="myCanvas" height="600px" width="600px"></canvas>
+            <div id="timer">Time Left: 30</div>
+
+            <div id="triviaContainer">
+                <div id="question"></div>
+                <div id="choiceContainer">
+                    <div id="choice0" class="answerContainer"></div>
+                    <div id="choice1" class="answerContainer"></div>
+                    <div id="choice2" class="answerContainer"></div>
+                    <div id="choice3" class="answerContainer"></div>
+                </div>
+                <div id="confirm">Skip</div>
+            </div>
+        </div>
+</body>
+<script src="assets/javascript/game.js">
+
+</script>
+
+</html>

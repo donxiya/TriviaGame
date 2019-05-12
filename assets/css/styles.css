@@ -1,4 +1,6 @@
-
+body{
+  background-color: #fcf4de;
+}
 .answerContainer{
   float: left;
   width: 190px;
@@ -65,8 +67,6 @@
   position:relative;
   background-color: #a0e89b;
   z-index: -1;
-  /* height: 500px;
-  width: 500px; */
 }
 #timer{
   margin: auto;
@@ -94,25 +94,65 @@
 #endScene{
   display: none;
   margin: auto;
-  background-color: palevioletred;
+  background-color: #2e4261;
   height: 600px;
   width: 600px;
+}
+#resultSlotR{
+  position: relative;
+  top: 150px;
+  color: #ccdde7;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+#resultSlotW{
+  position: relative;
+  top: 150px;
+  color: #ccdde7;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+p{
+  position: relative;
+  top: 150px;
+  color: #ccdde7;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  text-align: center;
 }
 #victoryScene{
   display: none;
   margin: auto;
-  background-color: blue;
-  height: 600px;
-  width: 600px;
-}
-#defeatScene{
-  display: none;
-  margin: auto;
-  background-color: green;
+  background-color: #414629;
   height: 600px;
   width: 600px;
 }
 
+#vicText{
+  position: relative;
+  top: 150px;
+  color: #d1eeb4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+#defeatScene{
+  display: none;
+  margin: auto;
+  background-color: #414629;
+  height: 600px;
+  width: 600px;
+}
+#defText{
+  position: relative;
+  top: 150px;
+  color: #d1eeb4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
 #answerSlot{
   position: relative;
   top: 200px;
@@ -127,5 +167,5 @@
   border-radius: 20px;
   border-width: 5px;
   border-style: solid;
-  border-color: #374727;
+  border-color: #9a9c0c;
 }
