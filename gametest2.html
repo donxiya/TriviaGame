@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Basic jQuery Dump</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+</head>
+
+<body>
+    <div id="endScene">
+    </div>
+    <div id="victoryScene">
+        <div id="answerSlot"></div>
+    </div>
+    <div id="defeatScene">
+        <div id="answerSlot"></div>
+    </div>
+    <div id="gameBody">
+        <canvas id="myCanvas" height="600px" width="600px"></canvas>
+        <div id="timer"></div>
+        <div id="triviaContainer">
+            <div id="question"></div>
+            <div id="choiceContainer">
+                <div id="choice0" class="answerContainer"></div>
+                <div id="choice1" class="answerContainer"></div>
+                <div id="choice2" class="answerContainer"></div>
+                <div id="choice3" class="answerContainer"></div>
+            </div>
+            <div id="confirm" class="default">confirm</div>
+        </div>
+    </div>
+</body>
+<script src="game.js">
+
+</script>
+
+</html>

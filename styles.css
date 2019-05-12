@@ -1,0 +1,103 @@
+.default{
+  float: left;
+  width: 100px;
+  height:100px;
+  background-color: chocolate;
+  margin: 10px;
+}
+.defaultClick{
+  float: left;
+  width: 100px;
+  height:100px;
+  background-color: lightcyan;
+  margin: 10px;
+}
+.timerContainer{
+  float: left;
+  width: 100px;
+  height:100px;
+  background-color: chocolate;
+  margin: 10px;
+}
+.answerContainer{
+  float: left;
+  width: 200px;
+  height:50px;
+  background-color: lightcyan;
+  margin: 10px;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+.answerContainerClick{
+  background-color: black;
+  color: lightcyan;
+}
+.confirm{
+  float: left;
+  width: 100px;
+  height:100px;
+  background-color: chocolate;
+  margin: 10px;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+#choiceContainer{
+  margin: auto;
+  position:relative;
+  z-index: 1;
+  width: 440px;
+  height: 140px;
+  background-color: aquamarine;
+}
+#question{
+  margin: auto;
+  width: 400px;
+  height:50px;
+  background-color: bisque; 
+}
+#myCanvas{
+  padding: 0;
+  margin: auto;
+  display: block;
+  position:relative;
+  background-color: black;
+  z-index: -1;
+  /* height: 500px;
+  width: 500px; */
+}
+#timer{
+  color: antiquewhite;
+  background-color: black;
+}
+#triviaContainer{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -500px;
+  width: 500px;
+}
+#endScene{
+  display: none;
+  background-color: brown;
+  height: 500px;
+  width: 100%;
+}
+#victoryScene{
+  display: none;
+  background-color: blue;
+  height: 500px;
+  width: 100%;
+}
+#defeatScene{
+  display: none;
+  background-color: green;
+  height: 500px;
+  width: 100%;
+}
+
+#answerSlot{
+  background-color: azure;
+}
