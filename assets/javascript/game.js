@@ -91,7 +91,6 @@ var game = {
                 game.countWrong += 1;
 
                 clearInterval(game.timeUpdate);
-                console.log("wrong");
                 $("#defeatScene").slideDown(500);
                 $("#gameBody").slideUp(500);
 
@@ -111,11 +110,16 @@ var game = {
         } else {
             clearInterval(game.timeUpdate);
             game.countWrong += 1;
-            console.log("too late");
             $("#defeatScene").slideDown(500);
             $("#gameBody").slideUp(500);
             $("#answerSlot").text(game.slideList[game.slideOrder].answerStr);
-            if (game.slideOrder < (game.slideList.length - 1)) {
+            if (game.slideOrder === (game.slideList.length - 1)) {
+                console.log("too late");
+                $("#resultSlotR").text("Correct Answers: "+ game.countRight);
+                $("#resultSlotW").text("Failed: " + game.countWrong);
+                $("#defeatScene").delay(5000).slideUp(500);
+                $("#endScene").delay(5500).slideDown(500);
+            } else {
                 game.slideOrder++;
                 setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
             }
