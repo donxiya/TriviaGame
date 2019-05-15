@@ -72,12 +72,10 @@ var game = {
                 game.selection = null;
                 game.countRight += 1;
                 clearInterval(game.timeUpdate);
-                console.log("correct");
                 $("#victoryScene").slideDown(500);
                 $("#gameBody").slideUp(500);
                 $("#answerSlot").text(game.slideList[game.slideOrder].answer);
                 if (game.slideOrder == (game.slideList.length - 1)) {
-                    console.log("end");
                     $("#resultSlotR").text("Correct Answers: "+ game.countRight);
                     $("#resultSlotW").text("Failed: " + game.countWrong);
                     $("#victoryScene").delay(5000).slideUp(500);
@@ -85,8 +83,7 @@ var game = {
 
                 } else {
                     game.slideOrder++;
-                    console.log("next slide");
-                    setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
+                    setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 4000);
 
                 }
             } else if (game.selection != game.slideList[game.slideOrder].answer) {
@@ -132,13 +129,9 @@ var game = {
         $("#endScene").click(function(){location.reload();})
     },
     timer: function () {
-        // CANVAS
-
         var canvas = document.getElementById('myCanvas'),
             width = canvas.width,
             height = canvas.height;
-
-        // CANVAS PROPERTIES
         var ctx = canvas.getContext('2d');
         ctx.lineWidth = 45;
         ctx.strokeStyle = '#e8827d';
@@ -147,15 +140,12 @@ var game = {
         ctx.shadowBlur = 10;
         ctx.shadowColor = '#ef928f';
         ctx.globalCompositeOperation = 'destination-over';
-
-
-        // CANVAS 
         var x = width / 2,
             y = height / 2,
             radius = 270,
             circum = Math.PI * 2,
             start = Math.PI / -2, 
-            curr = 1; // Current position (in %)
+            curr = 1; 
         var time = 30;
 
         var frame = function () {
