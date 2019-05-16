@@ -62,7 +62,7 @@ var game = {
         }
     },
     confirmAnswer: function () {
-        for(i=0; i<=4; i++){
+        if(game.slideOrder < game.slideList.length){for(i=0; i<=4; i++){
             $("#choice" + i).removeClass("answerContainerClick").addClass("answerContainer");
         };
         $("#confirm").text("Skip");
@@ -121,13 +121,14 @@ var game = {
                 setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
             }
         }
-
+}
+        
     },
     main: function () {
         game.slideshowUpdate(game.slideOrder);
         game.slideshowBody();
-        if(game.slideOrder < (game.slideList.length - 1)){
-        $("#confirm").click(function () { game.confirmAnswer(); })};
+
+        $("#confirm").click(function () { game.confirmAnswer(); });
         $("#endScene").click(function(){location.reload();})
     },
     timer: function () {
