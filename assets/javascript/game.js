@@ -66,7 +66,6 @@ var game = {
             $("#choice" + i).removeClass("answerContainerClick").addClass("answerContainer");
         };
         $("#confirm").text("Skip");
-        console.log("slide num: " + game.slideOrder);
         if (game.selection != null) {
             if (game.selection === game.slideList[game.slideOrder].answer) {
                 game.selection = null;
@@ -93,14 +92,13 @@ var game = {
                 clearInterval(game.timeUpdate);
                 $("#defeatScene").slideDown(500);
                 $("#gameBody").slideUp(500);
-
                 $("#answerSlot").text(game.slideList[game.slideOrder].answerStr);
                 if (game.slideOrder === (game.slideList.length - 1)) {
-                    console.log("end");
                     $("#resultSlotR").text("Correct Answers: "+ game.countRight);
                     $("#resultSlotW").text("Failed: " + game.countWrong);
                     $("#defeatScene").delay(5000).slideUp(500);
                     $("#endScene").delay(5500).slideDown(500);
+                   
                 } else {
                     game.slideOrder++;
                     setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
@@ -114,11 +112,10 @@ var game = {
             $("#gameBody").slideUp(500);
             $("#answerSlot").text(game.slideList[game.slideOrder].answerStr);
             if (game.slideOrder === (game.slideList.length - 1)) {
-                console.log("too late");
                 $("#resultSlotR").text("Correct Answers: "+ game.countRight);
                 $("#resultSlotW").text("Failed: " + game.countWrong);
                 $("#defeatScene").delay(5000).slideUp(500);
-                $("#endScene").delay(5500).slideDown(500);
+                $("#endScene").delay(5500).slideDown(500);                
             } else {
                 game.slideOrder++;
                 setTimeout(function () { game.slideshowUpdate(game.slideOrder) }, 5000);
@@ -129,7 +126,8 @@ var game = {
     main: function () {
         game.slideshowUpdate(game.slideOrder);
         game.slideshowBody();
-        $("#confirm").click(function () { game.confirmAnswer(); });
+        if(game.slideOrder < (game.slideList.length - 1)){
+        $("#confirm").click(function () { game.confirmAnswer(); })};
         $("#endScene").click(function(){location.reload();})
     },
     timer: function () {
